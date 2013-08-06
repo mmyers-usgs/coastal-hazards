@@ -386,6 +386,11 @@
 				<artifactId>jts</artifactId>
 				<version>1.13</version>
 			</dependency>
+			<dependency>
+				<groupId>gov.usgs.cida</groupId>
+				<artifactId>gt-shapefile</artifactId>
+				<version>10-SNAPSHOT</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	

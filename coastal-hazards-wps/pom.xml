@@ -44,6 +44,12 @@
 				<version>${gt.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+				<exclusions>
+					<exclusion>
+						<groupId>org.geotools</groupId>
+						<artifactId>gt-shapefile</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -54,13 +60,19 @@
 			<artifactId>gt-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.geotools</groupId>
+			<groupId>gov.usgs.cida</groupId>
 			<artifactId>gt-shapefile</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.geoserver.extension</groupId>
 			<artifactId>wps-core</artifactId>
 			<version>${gs.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.geotools</groupId>
+					<artifactId>gt-shapefile</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>

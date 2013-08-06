@@ -15,6 +15,7 @@
 	<properties>
 		<gs.version>2.3.2</gs.version>
 		<gt.version>9.2</gt.version>
+	 <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
 	</properties>
 
     <repositories>
@@ -23,6 +24,11 @@
 			<name>CIDA Public Nexus</name>
 			<url>http://cida.usgs.gov/maven/cida-public/</url>
 		</repository>
+        <repository>
+            <id>cida-snapshots</id>
+            <name>CIDA Snapshots</name>
+            <url>http://internal.cida.usgs.gov/maven/content/repositories/cida-snapshots/</url>
+        </repository>
         <repository>
             <id>opengeo</id>
             <url>http://repo.opengeo.org/</url>
@@ -44,6 +50,12 @@
 				<version>${gt.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+				<exclusions>
+					<exclusion>
+						<groupId>org.geotools</groupId>
+						<artifactId>gt-shapefile</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -69,9 +81,9 @@
             <artifactId>junit</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.geotools</groupId>
+            <groupId>gov.usgs.cida</groupId>
             <artifactId>gt-shapefile</artifactId>
-            <type>jar</type>
+			<type>jar</type>
         </dependency>
     </dependencies>
 
@@ -87,6 +99,9 @@
                         <overlay>
                             <groupId>gov.usgs.cida.geoserver</groupId>
                             <artifactId>geoserver</artifactId>
+                            <excludes>
+                                <exclude>WEB-INF/lib/gt-shapefile-9.2.jar</exclude>
+                            </excludes>
                         </overlay>
                     </overlays>
                     <warSourceExcludes>WEB-INF/web.xml</warSourceExcludes>
